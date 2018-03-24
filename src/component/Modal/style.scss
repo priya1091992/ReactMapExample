@@ -1,0 +1,40 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+  padding: 50px;
+  @media (max-width: 730px) {
+    padding: 18px;
+  }
+  .modal {
+    background-color: #fff;
+    border-radius: 5px;
+    max-width: 700px;
+    min-height: 300px;;
+    margin: 0 auto;
+    padding: 30px;
+    @media (max-width: 730px) {
+      min-height: 480px !important;
+    }
+    .close {
+      margin-top: -14px;
+      margin-bottom: 36px;
+    }
+    .submit {
+      text-align: center;
+      @media (min-width: 391px) and (max-width: 730px) {
+        margin-top: 20%;
+      }
+      .submit-button {
+        width: 80%;
+        padding: 8px;
+        border: 1px solid darkgrey;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+    }
+  }
+}

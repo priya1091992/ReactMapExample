@@ -1,0 +1,26 @@
+.modal-container {
+  display: inline-block;
+  a {
+    color: blue;
+    text-decoration: underline;
+    font-weight: 300;
+    cursor: pointer;
+  }
+  .modal {
+    div {
+      margin-top: 16px;
+      font-size: 16px;
+      color: grey;
+      input[type="text"] {
+        line-height: 32px;
+        font-size: 15px;
+        padding-left: 20px;
+        margin-left: 12px;
+      }
+    }
+    .note {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.header {
+  background-color: lightGrey;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  .reset {
+    color: blue;
+    text-decoration: underline;
+    font-weight: 300;
+    cursor: pointer;
+  }
+}
