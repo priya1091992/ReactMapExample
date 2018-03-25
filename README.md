@@ -36,4 +36,10 @@ Run test cases using the below command on terminal
 1. npm run test
 
 ```
-# ReactMapExample
+
+For running test coverage
+
+```
+1. node_modules/.bin/jest --coverage
+
+```

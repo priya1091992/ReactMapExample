@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import GoogleMap from 'google-map-react';
-import MapMarker from './marker.js';
-import './style.scss';
 
-const markerColor = [
-  'red',
-  'green',
-  'blue',
-  'black',
-  'orange',
-  'pink',
-  'purple',
-  'yellow',
-  'grey',
-]
+import MapMarker from './marker.js';
+import { markerColor, API_KEY } from './../../libs/constants';
+import './style.scss';
 
 function createMapOptions(maps) {
   return {
@@ -50,7 +39,7 @@ export default class SimpleMapPage extends Component {
     return (
       <div className='google-map'>
        <GoogleMap
-        bootstrapURLKeys={'AIzaSyDbZ8B6TSTlfGRroPE9Gp9nOIZ0OZdmXHE'}
+        bootstrapURLKeys={API_KEY}
         center={center}
         zoom={zoom}
         options={createMapOptions}>

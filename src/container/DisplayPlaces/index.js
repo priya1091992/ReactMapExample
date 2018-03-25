@@ -21,6 +21,10 @@ export class ProductDetail extends Component {
     }
   }
 
+  /**
+  * Initialize a onDrop method
+  * to save uploaded file in the state of component.
+  */
   onDrop = (e) => {
     if(e[0] && e[0].name.includes('.csv')) {
       this.setState({
@@ -32,6 +36,11 @@ export class ProductDetail extends Component {
     }
   }
 
+  /**
+  * Initialize a getLocation method
+  * to find latitude and longitude
+  * using address mentioned in csv file.
+  */
   getLocation = (mapData) => {
     const { setMapCompleteData } = this.props
     let geocoder = new google.maps.Geocoder();
@@ -52,6 +61,10 @@ export class ProductDetail extends Component {
     }
   }
 
+  /**
+  * Use componentWillReceiveProps life cycle method
+  * to read csv file and store in map state of application.
+  */
   componentWillReceiveProps(nextProps) {
     if (this.props.columns !== nextProps.columns && nextProps.columns.length>0) {
       const reader = new FileReader();
@@ -71,6 +84,10 @@ export class ProductDetail extends Component {
     }
   }
 
+  /**
+  * Initialize a clearData method
+  * to reset the application.
+  */
   clearData = () => {
     this.props.reset()
     this.setState({
@@ -84,7 +101,6 @@ export class ProductDetail extends Component {
     const { files, mapData, getFile } = this.state
     const { columns, map, mapCenter } = this.props
     let isContainsData = Object.keys(map).length
-
 
     const renderMap = isContainsData != 0 ? <SimpleMapPage mapContent={map} center={mapCenter}/> : null
 

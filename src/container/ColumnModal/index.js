@@ -13,92 +13,104 @@ import './style.scss';
 class ColumnModal extends Component {
   constructor(props) {
     super(props);
-      this.state = {
+    this.state = {
       isOpen: false,
       selectedColumns: [],
       range: [
-         {id: 'Column 1', value: ''},
-         {id: 'Column 2', value: ''},
-         {id: 'Column 3', value: ''},
-         {id: 'Column 4', value: ''},
-         {id: 'Column 5', value: ''}
-       ]
+        {id: 'Column 1', value: ''},
+        {id: 'Column 2', value: ''},
+        {id: 'Column 3', value: ''},
+        {id: 'Column 4', value: ''},
+        {id: 'Column 5', value: ''}
+      ]
     };
   }
 
- toggleModal = () => {
+  /**
+  * Initialize a toggleModal method
+  * to open or close modal in application.
+  */
+  toggleModal = () => {
    this.setState({
      isOpen: !this.state.isOpen
    });
- }
+  }
 
- submitData = () => {
-   const { setData } = this.props
-   let rangeValue = true
-   let values = this.state.range.map((data) => data.value)
-   let duplicateValue = duplicateValidation(values)
+  /**
+  * Initialize a submitData method
+  * to save user entered columns in application.
+  */
+  submitData = () => {
+    const { setData } = this.props
+    let rangeValue = true
+    let values = this.state.range.map((data) => data.value)
+    let duplicateValue = duplicateValidation(values)
 
-   const expectedArray = ['state', 'zip', 'category', 'city', 'address']
-   rangeValue = rangeValidation(values, expectedArray)
+    const expectedArray = ['state', 'zip', 'category', 'city', 'address']
+    rangeValue = rangeValidation(values, expectedArray)
 
-   if (!rangeValue) {
-     alert("Please enter all and correct values!")
-   } else if (duplicateValue) {
+    if (!rangeValue) {
+      alert("Please enter all and correct values!")
+    } else if (duplicateValue) {
       alert("Please enter unique values!")
-   } else {
+    } else {
      this.setState({
        isOpen: !this.state.isOpen
      });
      setData(this.state.range)
-   }
- }
+    }
+  }
 
- setInputData = (i, e) => {
-   let rangeCopy = [...this.state.range]
-   rangeCopy.forEach((data) => {
-     if(data.id === i) {
-       data.value = e.target.value.trim().toLowerCase();
-     }
-   })
-   this.setState({
-     range: [...rangeCopy]
-   })
- }
+  /**
+  * Initialize a setInputData method
+  * to enter input values in textbox of modal.
+  */
+  setInputData = (i, e) => {
+    let rangeCopy = [...this.state.range]
+    rangeCopy.forEach((data) => {
+      if(data.id === i) {
+        data.value = e.target.value.trim().toLowerCase();
+       }
+    })
+    this.setState({
+      range: [...rangeCopy]
+    })
+  }
 
- render() {
-   const {inputData, range} = this.state
-   let rangeID = 1
+  render() {
+    const {inputData, range} = this.state
+    let rangeID = 1
     let userSelection = range.map((data, i) => {
       return (
         <div key={i}>
           <label> {data.id} </label>
-           <input
-             type="text"
-             onChange={(e) => this.setInputData(data.id, e)}
-             value={data.value.toUpperCase()}
-             placeholder="-------"
-           />
-         </div>
-       )
-     })
+          <input
+            type="text"
+            onChange={(e) => this.setInputData(data.id, e)}
+            value={data.value.toUpperCase()}
+            placeholder="-------"
+          />
+        </div>
+      )
+    })
 
-   return (
-     <div className="modal-container">
-       <a onClick={this.toggleModal}>
-         here
-       </a>
-       <Modal show={this.state.isOpen}
-         onClose={this.toggleModal}
-         onSubmit={this.submitData}
-         >
-         {userSelection}
-         <div className="note">
-          Note: Column name must be one of them: state, city, category, address and zip
-         </div>
-       </Modal>
-     </div>
-   )
- }
+    return (
+      <div className="modal-container">
+        <a onClick={this.toggleModal}>
+          here
+        </a>
+        <Modal show={this.state.isOpen}
+          onClose={this.toggleModal}
+          onSubmit={this.submitData}
+          >
+          {userSelection}
+          <div className="note">
+            Note: Column name must be one of them: state, city, category, address and zip
+          </div>
+        </Modal>
+      </div>
+    )
+  }
 }
 
 ColumnModal.propTypes = {

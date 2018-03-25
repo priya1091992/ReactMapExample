@@ -15,7 +15,6 @@ class Header extends Component {
   }
 }
 
-
 Header.propTypes = {
   reset: PropTypes.func,
 };
