@@ -50,7 +50,7 @@ export default class SimpleMapPage extends Component {
     return (
       <div className='google-map'>
        <GoogleMap
-        apiKey={'AIzaSyDbZ8B6TSTlfGRroPE9Gp9nOIZ0OZdmXHE'}
+        bootstrapURLKeys={'AIzaSyDbZ8B6TSTlfGRroPE9Gp9nOIZ0OZdmXHE'}
         center={center}
         zoom={zoom}
         options={createMapOptions}>
@@ -68,5 +68,5 @@ SimpleMapPage.defaultProps = {
 
 SimpleMapPage.propTypes =   {
   mapContent: PropTypes.object.isRequired,
-  mapCenter: PropTypes.array.isRequired
+  center: PropTypes.array
 }

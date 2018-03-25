@@ -42,9 +42,9 @@ class ColumnModal extends Component {
    rangeValue = rangeValidation(values, expectedArray)
 
    if (!rangeValue) {
-     alert("Please enter all values")
+     alert("Please enter all and correct values!")
    } else if (duplicateValue) {
-      alert("Please enter unique values")
+      alert("Please enter unique values!")
    } else {
      this.setState({
        isOpen: !this.state.isOpen
@@ -57,7 +57,7 @@ class ColumnModal extends Component {
    let rangeCopy = [...this.state.range]
    rangeCopy.forEach((data) => {
      if(data.id === i) {
-       data.value = e.target.value.toLowerCase();
+       data.value = e.target.value.trim().toLowerCase();
      }
    })
    this.setState({
