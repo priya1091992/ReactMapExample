@@ -1,4 +1,4 @@
-# ReactShoppingCart
+# ReactMapExample
 
 Application that uploads a csv and after uploading csv user can enter the column names as state,city,address,zip and category. And from that information the user can view the data from csv on map with differnt marker grouped by category.
 
@@ -18,10 +18,11 @@ A step by step series to get a development env running
 
 ```
 1. git clone https://github.com/priya1091992/ReactMapExample.git
-2. npm install
-3. npm run build
-4. npm run start
-4. run application on url: http://localhost:8000/
+2. cd ReactMapExample
+3. npm install
+4. npm run build
+5. npm run start
+6. run application on url: http://localhost:8000/
 
 ```
 
