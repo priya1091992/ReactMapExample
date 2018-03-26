@@ -36,29 +36,44 @@ export class ProductDetail extends Component {
     }
   }
 
+  geoCoder = (completeAddress, geocoder) => {
+    return new Promise((resolve, reject) => {
+      geocoder.geocode({ 'address': completeAddress}, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK) {
+          resolve(results)
+        } else {
+          reject(false)
+        }
+      });
+    })
+  }
+
   /**
   * Initialize a getLocation method
   * to find latitude and longitude
   * using address mentioned in csv file.
   */
-  getLocation = (mapData) => {
+  getLocation = async (mapData) => {
     const { setMapCompleteData } = this.props
     let geocoder = new google.maps.Geocoder();
     let completeAddress
     let latLng = []
     for(let data of mapData) {
       completeAddress = `${data.state}, ${data.city}, ${data.zip}, ${data.address}`
-      geocoder.geocode({ 'address': completeAddress}, (results, status) => {
-        if (status == google.maps.GeocoderStatus.OK) {
+      try {
+        let callFunc = await this.geoCoder(completeAddress, geocoder)
+        if(callFunc) {
           latLng.push({
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
+            lat: callFunc[0].geometry.location.lat(),
+            lng: callFunc[0].geometry.location.lng(),
             category: data.category
           })
-          setMapCompleteData(latLng);
         }
-      });
+      } catch(e) {
+        console.log("Something went wrong!")
+      }
     }
+    setMapCompleteData(latLng);
   }
 
   /**
